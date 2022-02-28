@@ -1,43 +1,43 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { data } from '../../../mock/Categories/data';
+import React, { useEffect, useState, useContext } from "react";
+import { data } from "../../../mock/Categories/data";
 import {
   Wrapper,
   Header,
   SortByDateWrap,
   SortByPriceWrap,
   Body,
-} from './style';
-import { Pagination } from 'antd';
-import { Dashboard } from '../../../context/Dashboard';
+} from "./style";
+import { Pagination } from "antd";
+import { Dashboard } from "../../../context/Dashboard";
 import {
   HeartOutlined,
   SearchOutlined,
   ShoppingCartOutlined,
-} from '@ant-design/icons';
+} from "@ant-design/icons";
 
 const MapData = () => {
   const [mockdata, setMockData] = useState(data);
-  const [selected, setSelected] = useState('All Plants');
-  const [page, setPage] = useState('1');
+  const [selected, setSelected] = useState("All Plants");
+  const [page, setPage] = useState("1");
   const [showCard, setShowCard] = useState([1, 9]);
   const [choosenData] = useContext(Dashboard);
 
   const AllPlants = () => {
-    setSelected('All Plants');
+    setSelected("All Plants");
   };
   const NewArrivals = () => {
-    setSelected('New Arrivals');
+    setSelected("New Arrivals");
   };
   const Sale = () => {
-    setSelected('Sale');
+    setSelected("Sale");
   };
   useEffect(() => {
     switch (page) {
-      case '1':
+      case "1":
         return setShowCard([1, 9]);
-      case '2':
+      case "2":
         return setShowCard([10, 18]);
-      case '3':
+      case "3":
         return setShowCard([18, 20]);
       default:
         return setShowCard([1, 9]);
@@ -48,21 +48,21 @@ const MapData = () => {
       <Header>
         <SortByDateWrap>
           <SortByDateWrap.Title
-            active={selected === 'All Plants' ? true : false}
+            active={selected === "All Plants" ? true : false}
             onClick={AllPlants}
           >
             All Plants
           </SortByDateWrap.Title>
 
           <SortByDateWrap.Title
-            active={selected === 'New Arrivals' ? true : false}
+            active={selected === "New Arrivals" ? true : false}
             onClick={NewArrivals}
             left
           >
             New Arrivals
           </SortByDateWrap.Title>
           <SortByDateWrap.Title
-            active={selected === 'Sale' ? true : false}
+            active={selected === "Sale" ? true : false}
             onClick={Sale}
             left
           >
@@ -88,15 +88,15 @@ const MapData = () => {
                   <Body.Img src={value.img} />
                   <Body.Title>{value.name}</Body.Title>
                   <Body.Price>${value.price}</Body.Price>
-                  <Body.HoverableWrap className='hover'>
+                  <Body.HoverableWrap className="hover">
                     <Body.HoverableIcons right>
-                      <ShoppingCartOutlined className='changeColor' />
+                      <ShoppingCartOutlined className="changeColor" />
                     </Body.HoverableIcons>
                     <Body.HoverableIcons right>
-                      <HeartOutlined className='changeColor' />
+                      <HeartOutlined className="changeColor" />
                     </Body.HoverableIcons>
                     <Body.HoverableIcons>
-                      <SearchOutlined className='changeColor' />
+                      <SearchOutlined className="changeColor" />
                     </Body.HoverableIcons>
                   </Body.HoverableWrap>
                 </Body.Card>
@@ -105,8 +105,8 @@ const MapData = () => {
         </Body.Container>
         <Pagination
           style={{
-            position: 'absolute',
-            bottom: '-90px',
+            position: "absolute",
+            bottom: "-90px",
             right: 0,
           }}
           onChange={(e) => setPage(e.toFixed())}

@@ -8,7 +8,7 @@ const Categories = () => {
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(1000);
   const [active, setActive] = useState(1);
-  const [, setChoosenData] = useContext(Dashboard);
+  const [choosenData, setChoosenData] = useContext(Dashboard);
   const changedValue = (e) => {
     setMin(e[0]);
     setMax(e[1]);
