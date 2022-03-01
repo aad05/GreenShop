@@ -20,7 +20,7 @@ const MapData = () => {
   const [selected, setSelected] = useState("All Plants");
   const [page, setPage] = useState("1");
   const [showCard, setShowCard] = useState([1, 9]);
-  const [choosenData] = useContext(Dashboard);
+  const [choosenData,setChoosenData] = useContext(Dashboard);
 
   const AllPlants = () => {
     setSelected("All Plants");
