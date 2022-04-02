@@ -14,13 +14,16 @@ import {
   SearchOutlined,
   ShoppingCartOutlined,
 } from '@ant-design/icons';
+import FilterBySlide from '../../../context/SliderFilter';
 
 const MapData = () => {
   const [mockdata, setMockData] = useState(data);
   const [selected, setSelected] = useState('All Plants');
+  const [total, setTotal] = useState(30);
   const [page, setPage] = useState('1');
   const [showCard, setShowCard] = useState([1, 9]);
   const [choosenData] = useContext(Dashboard);
+  const filterData = useContext(FilterBySlide);
 
   const AllPlants = () => {
     setSelected('All Plants');
@@ -34,15 +37,66 @@ const MapData = () => {
   useEffect(() => {
     switch (page) {
       case '1':
-        return setShowCard([1, 9]);
+        return setShowCard([0, 8]);
       case '2':
-        return setShowCard([10, 18]);
+        return setShowCard([9, 17]);
       case '3':
-        return setShowCard([18, 20]);
+        return setShowCard([18, 26]);
       default:
-        return setShowCard([1, 9]);
+        return setShowCard([0, 8]);
     }
   }, [page]);
+  const defaultSort = () => {
+    const defaultSortedData = data[choosenData];
+    setMockData({ ...mockdata, choosenData: defaultSortedData });
+  };
+  const chepestSort = () => {
+    const chepestSortedData = mockdata[choosenData].sort(function (a, b) {
+      if (a.price < b.price) {
+        return -1;
+      }
+      if (a.price > b.price) {
+        return 1;
+      }
+      return 0;
+    });
+    setMockData({ ...mockdata, choosenData: chepestSortedData });
+  };
+
+  filterData.filter = () => {
+    const filteredData = data[choosenData].filter(
+      (value) => value.price > filterData.min && value.price < filterData.max
+    );
+    setMockData({ ...mockdata, [choosenData]: filteredData });
+    if (filteredData.length >= 18 && filteredData.length <= 26) setTotal(30);
+    if (filteredData.length >= 9 && filteredData.length <= 17) setTotal(20);
+    if (filteredData.length >= 0 && filteredData.length <= 8) setTotal(10);
+  };
+  const expensiveSort = () => {
+    const expensiveSortedData = mockdata[choosenData].sort(function (a, b) {
+      if (a.price < b.price) {
+        return 1;
+      }
+      if (a.price > b.price) {
+        return -1;
+      }
+      return 0;
+    });
+    setMockData({ ...mockdata, choosenData: expensiveSortedData });
+  };
+
+  const sortData = (sortType) => {
+    switch (sortType) {
+      case 'default':
+        return defaultSort();
+      case 'chepest':
+        return chepestSort();
+      case 'expensive':
+        return expensiveSort();
+      default:
+        return defaultSort();
+    }
+  };
   return (
     <Wrapper>
       <Header>
@@ -71,19 +125,25 @@ const MapData = () => {
         </SortByDateWrap>
         <SortByPriceWrap>
           <SortByPriceWrap.Title>Sort by:</SortByPriceWrap.Title>
-          <SortByPriceWrap.Select>
-            <SortByPriceWrap.Option>Default Sorting</SortByPriceWrap.Option>
-            <SortByPriceWrap.Option>Chepest</SortByPriceWrap.Option>
-            <SortByPriceWrap.Option>Most Expensive</SortByPriceWrap.Option>
+          <SortByPriceWrap.Select onChange={(e) => sortData(e.target.value)}>
+            <SortByPriceWrap.Option value='default'>
+              Default Sorting
+            </SortByPriceWrap.Option>
+            <SortByPriceWrap.Option value='chepest'>
+              Chepest
+            </SortByPriceWrap.Option>
+            <SortByPriceWrap.Option value='expensive'>
+              Most Expensive
+            </SortByPriceWrap.Option>
           </SortByPriceWrap.Select>
         </SortByPriceWrap>
       </Header>
       <Body>
         <Body.Container>
           {mockdata[choosenData].map(
-            (value) =>
-              value.id >= showCard[0] &&
-              value.id <= showCard[1] && (
+            (value, index) =>
+              index >= showCard[0] &&
+              index <= showCard[1] && (
                 <Body.Card key={value.id}>
                   <Body.Img src={value.img} />
                   <Body.Title>{value.name}</Body.Title>
@@ -111,7 +171,7 @@ const MapData = () => {
           }}
           onChange={(e) => setPage(e.toFixed())}
           defaultCurrent={1}
-          total={30}
+          total={total}
         />
       </Body>
     </Wrapper>
