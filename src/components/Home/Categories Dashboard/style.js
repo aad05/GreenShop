@@ -40,12 +40,33 @@ export const NameWrapper = styled.div`
 `;
 export const PriceWrap = styled.div`
   display: flex;
-`;
-export const Price = styled.div`
   font-style: normal;
-  font-weight: 600;
   font-size: 15px;
   line-height: 16px;
+  align-items: center;
+  height: 30px;
+  font-weight: 300;
+`;
+export const Price = styled.div`
+  font-weight: 600;
   color: #46a358;
-  padding-left: ${({ left }) => left && '5px'};
+  padding-left: 5px;
+`;
+export const DashBoard = styled.img`
+  height: 470px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
+export const FilterButton = styled.div`
+  height: 35px;
+  background: #46a358;
+  border-radius: 6px;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 46px;
 `;
