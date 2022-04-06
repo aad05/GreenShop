@@ -15,6 +15,7 @@ import {
   ShoppingCartOutlined,
 } from '@ant-design/icons';
 import FilterBySlide from '../../../context/SliderFilter';
+import { useNavigate } from 'react-router-dom';
 
 const MapData = () => {
   const [mockdata, setMockData] = useState(data);
@@ -25,6 +26,7 @@ const MapData = () => {
   const [choosenData] = useContext(Dashboard);
   const filterData = useContext(FilterBySlide);
 
+  const navigate = useNavigate();
   const AllPlants = () => {
     setSelected('All Plants');
   };
@@ -155,7 +157,11 @@ const MapData = () => {
                     <Body.HoverableIcons right>
                       <HeartOutlined className='changeColor' />
                     </Body.HoverableIcons>
-                    <Body.HoverableIcons>
+                    <Body.HoverableIcons
+                      onClick={() => {
+                        navigate(`/shop/${choosenData}/${value.id}`);
+                      }}
+                    >
                       <SearchOutlined className='changeColor' />
                     </Body.HoverableIcons>
                   </Body.HoverableWrap>

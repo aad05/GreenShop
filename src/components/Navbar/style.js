@@ -65,6 +65,7 @@ export const Link = styled(NavLink)`
   position: relative;
   :hover {
     font-weight: bold;
+    color: #46a359;
   }
   ::after {
     content: '';
@@ -78,5 +79,6 @@ export const Link = styled(NavLink)`
   }
   :hover::after {
     width: 100%;
+    color: #46a359;
   }
 `;
