@@ -1,12 +1,21 @@
 import React from 'react';
-import {} from './style';
+import { Wrapper } from './style';
 import { useParams } from 'react-router-dom';
+import { data } from '../../mock/Categories/data';
+import LeftSide from './LeftSide';
+import RightSide from './RightSide';
 
 const ParamsComponent = () => {
   const { id, type } = useParams();
+  const useParamsData = data[type].find((value) => value.id === +id);
   return (
     <div>
-      Use Params {id} {type}
+      <Wrapper>
+        <Wrapper.Container>
+          <LeftSide data={useParamsData} />
+          <RightSide data={useParamsData} />
+        </Wrapper.Container>
+      </Wrapper>
     </div>
   );
 };

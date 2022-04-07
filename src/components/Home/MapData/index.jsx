@@ -25,7 +25,6 @@ const MapData = () => {
   const [showCard, setShowCard] = useState([1, 9]);
   const [choosenData] = useContext(Dashboard);
   const filterData = useContext(FilterBySlide);
-
   const navigate = useNavigate();
   const AllPlants = () => {
     setSelected('All Plants');
