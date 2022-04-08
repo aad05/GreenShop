@@ -1,8 +1,9 @@
-import React from 'react';
-import Categories from './Categories Dashboard';
-import MainCard from './MainCard';
-import MapData from './MapData';
-import { Container } from './style';
+import React from "react";
+import Footer from "./Footer";
+import Categories from "./Categories Dashboard";
+import MainCard from "./MainCard";
+import MapData from "./MapData";
+import { Container } from "./style";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
         <Categories />
         <MapData />
       </Container>
+      <Footer />
     </div>
   );
 };
