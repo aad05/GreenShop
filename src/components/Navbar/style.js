@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { Modal } from 'antd';
 
 export const Wrapper = styled.div`
   width: 85%;
@@ -82,3 +83,101 @@ export const Link = styled(NavLink)`
     color: #46a359;
   }
 `;
+Wrapper.Modal = styled(Modal)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  .ant-btn-default {
+    display: none;
+  }
+  .ant-btn-primary {
+    display: none;
+  }
+  .ant-modal-close-x {
+    :hover {
+      color: #46a359;
+    }
+  }
+`;
+Wrapper.Modal.HeaderWrapper = styled.div`
+  display: flex;
+  grid-gap: 11px;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+`;
+Wrapper.Modal.Header = styled.div`
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 16px;
+  color: ${({ active }) => (active ? '#46a359' : ' #3d3d3d')};
+  cursor: pointer;
+`;
+Wrapper.Modal.HeaderBorder = styled.div`
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100;
+  font-size: 18px;
+  line-height: 16px;
+  color: #3d3d3d;
+`;
+Wrapper.Modal.LoginWrapper = styled.div`
+  width: 80%;
+  margin: auto;
+`;
+Wrapper.ModalParagraph = styled.div`
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: ${({ forgot }) => (forgot ? '#46a359' : '#3d3d3d')};
+  margin-bottom: 14px;
+  text-align: ${({ forgot }) => forgot && 'right'};
+`;
+Wrapper.Modal.LoginInput = styled.input`
+  border: 1px solid #eaeaea;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  padding-left: 14px;
+  outline-color: #46a359;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: ${({ active }) => (active ? '#000' : '#a5a5a5')};
+  margin-bottom: 17px;
+  background: ${({ active }) => active && '#E8F0FE'};
+  ::placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #a5a5a5;
+  }
+`;
+Wrapper.Modal.Button = styled.div`
+  height: 45px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${({ changeColor }) => (changeColor ? '#727272' : '#fff')};
+  background-color: ${({ changeBg }) => (changeBg ? 'none' : '#46A358')};
+  border: ${({ hasBorder }) => hasBorder && '1px solid #EAEAEA'};
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: ${({ mt }) => mt && `${mt}px`};
+  display: flex;
+`;
+Wrapper.Modal.Icon = styled.img`
+  margin-right: ${({ google }) => (google ? '13px' : '5px')};
+`;
+
+// E8F0FE
