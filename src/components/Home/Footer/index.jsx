@@ -80,7 +80,9 @@ const Footer = () => {
                 <FooterCardTitle>Social Media</FooterCardTitle>
                 <div>
                   {value.social.map((value) => {
-                    return <img src={value.icon} />;
+                    return (
+                      <img style={{ marginLeft: "7px" }} src={value.icon} />
+                    );
                   })}
                 </div>
               </DisplayFlexColumn>
