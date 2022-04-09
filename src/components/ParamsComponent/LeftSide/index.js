@@ -19,7 +19,9 @@ const LeftSide = ({ data }) => {
         ))}
       </Wrapper.ImgSet>
       <Wrapper.MainImgWrapper>
-        <Wrapper.Search />
+        <a style={{ color: '#000' }} href='#description'>
+          <Wrapper.Search />
+        </a>
         <Wrapper.MainWrapper img src={imgSet[showImg]} />
       </Wrapper.MainImgWrapper>
     </Wrapper>

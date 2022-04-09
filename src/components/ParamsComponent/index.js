@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { data } from '../../mock/Categories/data';
 import LeftSide from './LeftSide';
 import RightSide from './RightSide';
+import Description from './Description';
 
 const ParamsComponent = () => {
   const { id, type } = useParams();
@@ -15,6 +16,7 @@ const ParamsComponent = () => {
           <LeftSide data={useParamsData} />
           <RightSide data={useParamsData} />
         </Wrapper.Container>
+        <Description />
       </Wrapper>
     </div>
   );
