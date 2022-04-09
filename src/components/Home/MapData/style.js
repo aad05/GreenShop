@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { Modal } from 'antd';
 
 const moveLeft = keyframes`
   from {
@@ -124,3 +125,23 @@ Body.HoverableIcons = styled.div`
   }
 `;
 export const PaginationWrapper = styled.div``;
+
+// Edit Modal
+
+export const AdminEditModal = styled(Modal)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  .ant-btn-default {
+    display: none;
+  }
+  .ant-btn-primary {
+    display: none;
+  }
+  .ant-modal-close-x {
+    :hover {
+      color: #46a359;
+    }
+  }
+`;

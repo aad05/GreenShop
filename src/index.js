@@ -6,12 +6,15 @@ import Root from './root';
 import 'antd/dist/antd.css';
 import Dashboad from './context/Dashboard';
 import { SliderFilter } from './context/SliderFilter';
+import { Authorization } from './context/Authorization';
 
 ReactDOM.render(
   <BrowserRouter>
     <Dashboad>
       <SliderFilter>
-        <Root />
+        <Authorization>
+          <Root />
+        </Authorization>
       </SliderFilter>
     </Dashboad>
   </BrowserRouter>,

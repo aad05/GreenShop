@@ -124,7 +124,8 @@ Wrapper.Modal.HeaderBorder = styled.div`
   line-height: 16px;
   color: #3d3d3d;
 `;
-Wrapper.Modal.LoginWrapper = styled.div`
+
+Wrapper.LoginWrapper = styled.div`
   width: 80%;
   margin: auto;
 `;

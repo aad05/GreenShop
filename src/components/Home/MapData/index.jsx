@@ -6,6 +6,7 @@ import {
   SortByDateWrap,
   SortByPriceWrap,
   Body,
+  AdminEditModal,
 } from './style';
 import { Pagination } from 'antd';
 import { Dashboard } from '../../../context/Dashboard';
@@ -13,9 +14,11 @@ import {
   HeartOutlined,
   SearchOutlined,
   ShoppingCartOutlined,
+  EditOutlined,
 } from '@ant-design/icons';
 import FilterBySlide from '../../../context/SliderFilter';
 import { useNavigate } from 'react-router-dom';
+import AuthorizationData from '../../../context/Authorization';
 
 const MapData = () => {
   const [mockdata, setMockData] = useState(data);
@@ -25,6 +28,9 @@ const MapData = () => {
   const [showCard, setShowCard] = useState([1, 9]);
   const [choosenData] = useContext(Dashboard);
   const filterData = useContext(FilterBySlide);
+  const [authedData] = useContext(AuthorizationData);
+  const [visible, setVisible] = useState(false);
+
   const navigate = useNavigate();
   const AllPlants = () => {
     setSelected('All Plants');
@@ -100,6 +106,9 @@ const MapData = () => {
   };
   return (
     <Wrapper>
+      <AdminEditModal visible={visible} onCancel={() => setVisible(!visible)}>
+        Edit Data coming soon...
+      </AdminEditModal>
       <Header>
         <SortByDateWrap>
           <SortByDateWrap.Title
@@ -150,6 +159,14 @@ const MapData = () => {
                   <Body.Title>{value.name}</Body.Title>
                   <Body.Price>${value.price}</Body.Price>
                   <Body.HoverableWrap className='hover'>
+                    {authedData.isAdmin && (
+                      <Body.HoverableIcons
+                        onClick={() => setVisible(!visible)}
+                        right
+                      >
+                        <EditOutlined className='changeColor' />
+                      </Body.HoverableIcons>
+                    )}
                     <Body.HoverableIcons right>
                       <ShoppingCartOutlined className='changeColor' />
                     </Body.HoverableIcons>
