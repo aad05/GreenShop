@@ -20,8 +20,13 @@ export const Authorization = ({ children }) => {
     email: '',
   });
   function checkUser(email, password) {
-    if (localStorage.getItem('usersData')) {
-      console.log('yeah have');
+    console.log('working');
+    if (
+      localStorage.getItem('usersData') &&
+      JSON.parse(localStorage.getItem('usersData')).find(
+        (value) => value.email === email && value.password && password
+      )
+    ) {
       let findedData = JSON.parse(localStorage.getItem('usersData')).find(
         (value) => value.email === email && value.password === password
       );
@@ -64,6 +69,7 @@ export const Authorization = ({ children }) => {
     }
   }
   function registerUser(userData) {
+    console.log(data);
     data.push(userData);
     return checkUser(userData.email, userData.password);
   }
