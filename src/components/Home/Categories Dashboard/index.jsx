@@ -9,7 +9,6 @@ import {
   FilterButton,
 } from './style';
 import { data } from '../../../mock/Categories/categories';
-import { Slider } from 'antd';
 import { Dashboard } from '../../../context/Dashboard';
 import Banner from '../../../assets/imgs/banner.png';
 import FilterBySlide from '../../../context/SliderFilter';
@@ -40,7 +39,7 @@ const Categories = () => {
           <div>{name}</div> <div>({much})</div>
         </NameWrapper>
       ))}
-      <Slider
+      <Wrapper.Slider
         onChange={changedValue}
         max={1000}
         range

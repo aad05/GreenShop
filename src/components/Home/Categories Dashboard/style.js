@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Slider } from 'antd';
 
 export const Wrapper = styled.div`
   flex: 1;
@@ -69,4 +70,15 @@ export const FilterButton = styled.div`
   color: white;
   cursor: pointer;
   margin-bottom: 46px;
+`;
+Wrapper.Slider = styled(Slider)`
+  .ant-slider-track {
+    border: 2px solid #46a358;
+  }
+  .ant-slider-handle {
+    background: #46a358;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #fff;
+  }
 `;
