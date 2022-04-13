@@ -1,5 +1,6 @@
 import React from 'react';
 import Categories from './Categories Dashboard';
+import CreateNewsletter from './CreateNewsletter';
 import MainCard from './MainCard';
 import MapData from './MapData';
 import { Container } from './style';
@@ -13,6 +14,7 @@ const Home = () => {
         <Categories />
         <MapData />
       </Container>
+      <CreateNewsletter />
     </div>
   );
 };
