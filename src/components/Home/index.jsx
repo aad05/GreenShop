@@ -1,5 +1,6 @@
 import React from 'react';
 import Categories from './Categories Dashboard';
+import { CouponApplyPage } from './CouponApplyPage';
 import MainCard from './MainCard';
 import MapData from './MapData';
 import { Container } from './style';
