@@ -4,6 +4,7 @@ import user from '../assets/icons/user.svg';
 import location from '../assets/icons/location.svg';
 import Generic from '../pages/Generic';
 import AcountDetails from '../components/Profile/AcountDetails';
+import { WishListPage } from '../components/Profile/WishListPage';
 
 export const dashboardData = [
   {
@@ -31,7 +32,7 @@ export const dashboardData = [
     id: 4,
     title: 'Wishlist',
     pathname: 'profile/wishlist',
-    Component: Generic,
+    Component: WishListPage,
     icon: heart,
   },
 ];
