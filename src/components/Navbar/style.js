@@ -4,7 +4,7 @@ import { Modal } from 'antd';
 
 export const Wrapper = styled.div`
   width: 85%;
-  height: 78px;
+  height: 7px;
   margin: auto;
   display: flex;
   border-bottom: 0.3px solid rgba(70, 163, 88, 0.5);
