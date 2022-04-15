@@ -19,6 +19,8 @@ import {
 import FilterBySlide from '../../../context/SliderFilter';
 import { useNavigate } from 'react-router-dom';
 import AuthorizationData from '../../../context/Authorization';
+import { LoadingOutlined } from '@ant-design/icons';
+import { Spin } from 'antd';
 
 const MapData = () => {
   const [mockdata, setMockData] = useState(data);
@@ -30,6 +32,17 @@ const MapData = () => {
   const filterData = useContext(FilterBySlide);
   const [authedData] = useContext(AuthorizationData);
   const [visible, setVisible] = useState(false);
+  const [showSpinner, setShowSpinner] = useState(false);
+  const [selectedData, setSelectedData] = useState({
+    selectIndex: 0,
+    name: '',
+    price: '',
+    discount: false,
+  });
+
+  const antIcon = (
+    <LoadingOutlined style={{ fontSize: 24, color: '#fff' }} spin />
+  );
 
   const navigate = useNavigate();
   const AllPlants = () => {
@@ -104,10 +117,59 @@ const MapData = () => {
         return defaultSort();
     }
   };
+  const editData = (index, name, price) => {
+    setVisible(!visible);
+    setSelectedData({ ...selectedData, selectIndex: index, name, price });
+  };
+  const modalEditChange = (e) => {
+    setSelectedData({ ...selectedData, [e.target.name]: e.target.value });
+  };
+  const editDataChange = () => {
+    const { selectIndex, price, name, discount } = selectedData;
+    setShowSpinner(true);
+    setTimeout(() => {
+      setShowSpinner(false);
+      const changedData = mockdata[choosenData].map((value) =>
+        value.id - 1 === selectIndex
+          ? {
+              ...value,
+              name,
+              price,
+              discount: JSON.parse(discount),
+            }
+          : value
+      );
+      setMockData({ ...mockdata, [choosenData]: changedData });
+      setVisible(false);
+    }, 1000);
+  };
+  const { selectIndex, price, name } = selectedData;
   return (
     <Wrapper>
       <AdminEditModal visible={visible} onCancel={() => setVisible(!visible)}>
-        Edit Data coming soon...
+        <Wrapper.EditImage src={mockdata[choosenData][selectIndex].img} />
+        <Wrapper.ModalParagraph>New Name of Plant</Wrapper.ModalParagraph>
+        <Wrapper.LoginInput
+          value={name}
+          name='name'
+          placeholder='New plant name'
+          onChange={modalEditChange}
+        />
+        <Wrapper.ModalParagraph>New Price of Plant</Wrapper.ModalParagraph>
+        <Wrapper.LoginInput
+          value={price}
+          name='price'
+          placeholder='New price name'
+          onChange={modalEditChange}
+        />
+        <Wrapper.ModalParagraph>Discount</Wrapper.ModalParagraph>
+        <Wrapper.Select name='discount' onChange={modalEditChange}>
+          <Wrapper.Option value={false}>False</Wrapper.Option>
+          <Wrapper.Option value={true}>True</Wrapper.Option>
+        </Wrapper.Select>
+        <Wrapper.Button mt='27' onClick={editDataChange}>
+          {showSpinner ? <Spin indicator={antIcon} /> : 'Change'}
+        </Wrapper.Button>
       </AdminEditModal>
       <Header>
         <SortByDateWrap>
@@ -161,7 +223,7 @@ const MapData = () => {
                   <Body.HoverableWrap className='hover'>
                     {authedData.isAdmin && (
                       <Body.HoverableIcons
-                        onClick={() => setVisible(!visible)}
+                        onClick={() => editData(index, value.name, value.price)}
                         right
                       >
                         <EditOutlined className='changeColor' />
