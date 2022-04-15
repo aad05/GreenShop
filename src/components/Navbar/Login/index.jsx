@@ -5,6 +5,7 @@ import AuthorizationData from '../../../context/Authorization';
 import { Wrapper } from './style';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import Navigator from '../../../context/NavigateContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -12,12 +13,14 @@ const Login = () => {
   const [showSpinner, setShowSpinner] = useState(false);
   const [authData, setAuhedData] = useContext(AuthorizationData);
   const [warnignAnimation, setWarningAnimation] = useState(false);
+  const [navogateTo] = useContext(Navigator);
+
   const antIcon = (
     <LoadingOutlined style={{ fontSize: 24, color: '#fff' }} spin />
   );
   const onSubmit = (e) => {
     if (e.key === 'Enter' || e.keyCode === 13 || e.type === 'click') {
-      email && password && authData.checkUser(email, password);
+      email && password && authData.checkUser(email, password, navogateTo);
       setShowSpinner(true);
       setTimeout(() => {
         if (authData.isAuthed) {

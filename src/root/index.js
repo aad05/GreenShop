@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import ParamsComponent from '../components/ParamsComponent';
 import Profile from '../components/Profile';
 import AuthorizationData from '../context/Authorization';
+import Products from '../components/Products';
 
 const Root = () => {
   const [authedData] = useContext(AuthorizationData);
@@ -16,6 +17,7 @@ const Root = () => {
           <Route path={pathname} key={id} element={<Component />} />
         ))}
         <Route path='shop/:type/:id' element={<ParamsComponent />} />
+        <Route path='shop/products' element={<Products />} />
         <Route element={<Profile />}>
           {dashboardData.map(({ id, pathname, Component }) => {
             return authedData.isAuthed ? (
@@ -25,6 +27,7 @@ const Root = () => {
             );
           })}
         </Route>
+        <Route path='/' element={<Navigate to='/home' />} />
       </Route>
     </Routes>
   );
