@@ -19,19 +19,22 @@ export const Authorization = ({ children }) => {
     lastName: '',
     phone: '',
     email: '',
-    navigateTo: '',
+    role: '',
+    storeName: '',
   });
-  function checkUser(email, password, path) {
+  function checkUser(userData, path) {
     if (
       localStorage.getItem('usersData') &&
       JSON.parse(localStorage.getItem('usersData')).find(
-        (value) => value.email === email && value.password && password
+        (value) =>
+          value.email === userData.email && value.password === userData.password
       )
     ) {
       let findedData = JSON.parse(localStorage.getItem('usersData')).find(
-        (value) => value.email === email && value.password === password
+        (value) =>
+          value.email === userData.email && value.password === userData.password
       );
-      if (findedData) {
+      if (findedData.role === userData.role) {
         setTimeout(() => {
           setMainData({
             ...mainData,
@@ -42,6 +45,25 @@ export const Authorization = ({ children }) => {
             lastName: findedData.lastName,
             phone: findedData.phone,
             email: findedData.email,
+            role: findedData.role,
+            storeName: findedData.storeName,
+            showModal: false,
+          });
+          navigate(path || '/home');
+        }, 2000);
+      } else if (findedData.role === 'admin') {
+        setTimeout(() => {
+          setMainData({
+            ...mainData,
+            isAdmin: findedData.role === 'admin',
+            isAuthed: true,
+            userName: findedData.userName,
+            firstName: findedData.firstName,
+            lastName: findedData.lastName,
+            phone: findedData.phone,
+            email: findedData.email,
+            role: findedData.role,
+            storeName: findedData.storeName,
             showModal: false,
           });
           navigate(path || '/home');
@@ -50,7 +72,10 @@ export const Authorization = ({ children }) => {
     } else {
       localStorage.setItem('usersData', JSON.stringify(data));
       let findedData = JSON.parse(localStorage.getItem('usersData')).find(
-        (value) => value.email === email && value.password === password
+        (value) =>
+          value.email === userData.email &&
+          value.password === userData.password &&
+          value.role === userData.role
       );
       if (findedData) {
         setTimeout(() => {
@@ -63,6 +88,8 @@ export const Authorization = ({ children }) => {
             lastName: findedData.lastName,
             phone: findedData.phone,
             email: findedData.email,
+            role: findedData.role,
+            storeName: findedData.storeName,
             showModal: false,
           });
           navigate(path || '/home');
@@ -72,7 +99,7 @@ export const Authorization = ({ children }) => {
   }
   function registerUser(userData, path) {
     data.push(userData);
-    return checkUser(userData.email, userData.password, path);
+    return checkUser(userData, path);
   }
   function logout() {
     setMainData({
