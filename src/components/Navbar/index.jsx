@@ -21,10 +21,13 @@ import Login from './Login';
 import Register from './Register';
 import AuthorizationData from '../../context/Authorization';
 import { useNavigate } from 'react-router-dom';
+import Navigator from '../../context/NavigateContext';
 
 const Navbar = () => {
   const [activeLogin, setActiveLogin] = useState('login');
   const [authedData, setAutheddata] = useContext(AuthorizationData);
+  const [, setNavigateTo] = useContext(Navigator);
+
   const navigate = useNavigate();
   return (
     <>
@@ -46,6 +49,7 @@ const Navbar = () => {
             onClick={() => {
               if (!authedData.isAuthed) {
                 setAutheddata({ ...authedData, showModal: true });
+                setNavigateTo('profile/account_details');
               } else {
                 navigate(`profile/account_details`);
               }
