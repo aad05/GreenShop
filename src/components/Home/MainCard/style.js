@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 85%;
@@ -10,12 +10,17 @@ export const Wrapper = styled.div`
     rgba(245, 245, 245, 0.5) 107.51%
   );
   margin-top: 12px;
-  display: flex;
+  .swiper-pagination-clickable .swiper-pagination-bullet {
+    background: #46a358;
+    transition: all 0.9s;
+  }
 `;
 export const Left = styled.div`
   flex: 1;
   height: 100%;
-  padding: 30px;
+  width: 50%;
+  padding: 10px;
+  padding-left: 30px;
 `;
 export const Right = styled.div`
   flex: 1;
@@ -24,14 +29,14 @@ export const Right = styled.div`
 `;
 export const Desc = styled.div`
   font-style: normal;
-  font-weight: ${({ line }) => (line ? '300' : '500')};
+  font-weight: ${({ line }) => (line ? "300" : "500")};
   font-size: 14px;
-  line-height: ${({ line }) => (line ? '26px' : '16px')};
+  line-height: ${({ line }) => (line ? "26px" : "16px")};
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #3d3d3d;
-  padding-top: ${({ top }) => (top ? '38px' : '10px')};
-  padding-bottom: ${({ line }) => line && '55px'};
+  padding-top: ${({ top }) => (top ? "38px" : "10px")};
+  padding-bottom: ${({ line }) => line && "55px"};
 `;
 export const Title = styled.div`
   font-style: normal;
@@ -40,6 +45,10 @@ export const Title = styled.div`
   line-height: 70px;
   text-transform: uppercase;
   color: #3d3d3d;
+  small {
+    color: #46a358;
+    font-size: 70px;
+  }
 `;
 export const Button = styled.div`
   background: #46a358;
