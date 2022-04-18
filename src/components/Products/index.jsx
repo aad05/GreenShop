@@ -1,8 +1,8 @@
 import React from 'react';
-import {} from './style';
+import { Wrapper } from './style';
 
 const Products = () => {
-  return <div>Products page</div>;
+  return <>asas</>;
 };
 
 export default Products;

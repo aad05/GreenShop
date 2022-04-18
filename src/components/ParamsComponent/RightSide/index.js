@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { Wrapper } from './style';
 import star from '../../../assets/icons/starlight.svg';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import AuthorizationData from '../../../context/Authorization';
 import Navigator from '../../../context/NavigateContext';
+import ProductContext from '../../../context/Products';
 
 const Right = ({ data }) => {
   const [sizeActive, setSizeActive] = useState(1);
@@ -11,12 +12,14 @@ const Right = ({ data }) => {
   const { type, id } = useParams();
   const [authedData, setAuthedData] = useContext(AuthorizationData);
   const [, setNavigateTo] = useContext(Navigator);
+  const [productData, setProductData] = useContext(ProductContext);
+  const navigate = useNavigate();
 
   const buyHandle = () => {
     const { isAuthed, showModal } = authedData;
 
     if (isAuthed) {
-      console.log('You can go');
+      navigate('/shop/products');
     } else {
       setNavigateTo('/shop/products');
       setAuthedData({
@@ -26,6 +29,21 @@ const Right = ({ data }) => {
     }
   };
 
+  const addCart = () => {
+    const { isAuthed, showModal } = authedData;
+
+    if (isAuthed) {
+      const newData = { ...data, count };
+      setProductData([...productData, newData]);
+      navigate('/home');
+    } else {
+      setNavigateTo(`/shop/${type}/${id}`);
+      setAuthedData({
+        ...authedData,
+        showModal: !showModal,
+      });
+    }
+  };
   return (
     <Wrapper>
       {/* ========== Header ========== */}
@@ -101,7 +119,7 @@ const Right = ({ data }) => {
         </Wrapper.IncreamentWrapper>
         <Wrapper.ButtonWrapper>
           <Wrapper.Button onClick={buyHandle}>Buy Now</Wrapper.Button>
-          <Wrapper.Button>Add to cart</Wrapper.Button>
+          <Wrapper.Button onClick={addCart}>Add to cart</Wrapper.Button>
           <Wrapper.ButtonHeart>
             <Wrapper.Heart />
           </Wrapper.ButtonHeart>
