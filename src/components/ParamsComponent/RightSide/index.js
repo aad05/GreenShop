@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
-import { Wrapper } from './style';
-import star from '../../../assets/icons/starlight.svg';
-import { useParams } from 'react-router';
+import React, { useContext, useState } from "react";
+import { Wrapper } from "./style";
+import star from "../../../assets/icons/starlight.svg";
+import { useParams, useNavigate } from "react-router";
+import AuthorizationData from "../../../context/Authorization";
 const Right = ({ data }) => {
   const [sizeActive, setSizeActive] = useState(1);
   const [count, setCount] = useState(1);
   const { type, id } = useParams();
+  const navigate = useNavigate();
+  const [isAuth, setIsAuth] = useContext(AuthorizationData);
+  const getNavigate = () => {
+    if (isAuth.isAuthed) {
+      navigate(`/shop/${type}/${id}/buy`);
+      console.log(isAuth.showModal);
+    } else setIsAuth({ ...isAuth, showModal: true });
+  };
+
   return (
     <Wrapper>
       {/* ========== Header ========== */}
@@ -31,7 +41,7 @@ const Right = ({ data }) => {
         <Wrapper.Description>
           The ceramic cylinder planters come with a wooden stand to help elevate
           your plants off the ground. The ceramic cylinder planters come with a
-          wooden stand to help elevate your plants off the ground.{' '}
+          wooden stand to help elevate your plants off the ground.{" "}
         </Wrapper.Description>
       </Wrapper.WrapperDescription>
       {/* ========== Size ========== */}
@@ -80,7 +90,7 @@ const Right = ({ data }) => {
           </Wrapper.IncreamentCart>
         </Wrapper.IncreamentWrapper>
         <Wrapper.ButtonWrapper>
-          <Wrapper.Button>Buy Now</Wrapper.Button>
+          <Wrapper.Button onClick={getNavigate}>Buy Now</Wrapper.Button>
           <Wrapper.Button>Add to cart</Wrapper.Button>
           <Wrapper.ButtonHeart>
             <Wrapper.Heart />
