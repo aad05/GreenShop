@@ -15,13 +15,19 @@ const Right = ({ data }) => {
   const [productData, setProductData] = useContext(ProductContext);
   const navigate = useNavigate();
 
+  const addItem = () => {
+    const newData = { ...data, count };
+    setProductData([...productData, newData]);
+  };
+
   const buyHandle = () => {
     const { isAuthed, showModal } = authedData;
 
     if (isAuthed) {
+      addItem();
       navigate('/shop/products');
     } else {
-      setNavigateTo('/shop/products');
+      setNavigateTo(`/shop/${type}/${id}`);
       setAuthedData({
         ...authedData,
         showModal: !showModal,
@@ -33,8 +39,7 @@ const Right = ({ data }) => {
     const { isAuthed, showModal } = authedData;
 
     if (isAuthed) {
-      const newData = { ...data, count };
-      setProductData([...productData, newData]);
+      addItem();
       navigate('/home');
     } else {
       setNavigateTo(`/shop/${type}/${id}`);
