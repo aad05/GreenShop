@@ -37,6 +37,7 @@ const MapData = () => {
     selectIndex: 0,
     name: '',
     price: '',
+    discountPrice: '',
     discount: false,
   });
 
@@ -128,6 +129,13 @@ const MapData = () => {
     const { selectIndex, price, name, discount } = selectedData;
     setShowSpinner(true);
     setTimeout(() => {
+      setSelectedData({
+        selectIndex: 0,
+        name: '',
+        price: '',
+        discountPrice: '',
+        discount: false,
+      });
       setShowSpinner(false);
       const changedData = mockdata[choosenData].map((value) =>
         value.id - 1 === selectIndex
@@ -136,6 +144,7 @@ const MapData = () => {
               name,
               price,
               discount: JSON.parse(discount),
+              discountPrice,
             }
           : value
       );
@@ -143,7 +152,7 @@ const MapData = () => {
       setVisible(false);
     }, 1000);
   };
-  const { selectIndex, price, name } = selectedData;
+  const { selectIndex, price, name, discountPrice, discount } = selectedData;
   return (
     <Wrapper>
       <AdminEditModal visible={visible} onCancel={() => setVisible(!visible)}>
@@ -167,6 +176,16 @@ const MapData = () => {
           <Wrapper.Option value={false}>False</Wrapper.Option>
           <Wrapper.Option value={true}>True</Wrapper.Option>
         </Wrapper.Select>
+        {discount === 'true' && (
+          <>
+            <Wrapper.LoginInput
+              value={discountPrice}
+              name='discountPrice'
+              placeholder='Discount price'
+              onChange={modalEditChange}
+            />
+          </>
+        )}
         <Wrapper.Button mt='27' onClick={editDataChange}>
           {showSpinner ? <Spin indicator={antIcon} /> : 'Change'}
         </Wrapper.Button>
@@ -217,9 +236,23 @@ const MapData = () => {
               index >= showCard[0] &&
               index <= showCard[1] && (
                 <Body.Card key={value.id}>
+                  {value.discount && (
+                    <Body.DiscountCard>Discount</Body.DiscountCard>
+                  )}
                   <Body.Img src={value.img} />
                   <Body.Title>{value.name}</Body.Title>
-                  <Body.Price>${value.price}</Body.Price>
+                  {value.discount ? (
+                    <Wrapper.DiscountStyle>
+                      <Wrapper.DiscountStyle.NewPrice>
+                        ${value.discountPrice}
+                      </Wrapper.DiscountStyle.NewPrice>
+                      <Wrapper.DiscountStyle.OldPrice>
+                        ${value.price}
+                      </Wrapper.DiscountStyle.OldPrice>
+                    </Wrapper.DiscountStyle>
+                  ) : (
+                    <Body.Price>${value.price}</Body.Price>
+                  )}
                   <Body.HoverableWrap className='hover'>
                     {authedData.isAdmin && (
                       <Body.HoverableIcons

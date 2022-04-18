@@ -124,6 +124,23 @@ Body.HoverableIcons = styled.div`
     }
   }
 `;
+Body.DiscountCard = styled.div`
+  width: 80px;
+  height: 29px;
+  background: #46a358;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
 export const PaginationWrapper = styled.div``;
 
 // Edit Modal
@@ -145,7 +162,10 @@ export const AdminEditModal = styled(Modal)`
     }
   }
 `;
-Wrapper.EditImage = styled.img``;
+Wrapper.EditImage = styled.img`
+  width: 250px;
+  height: 250px;
+`;
 Wrapper.ModalParagraph = styled.div`
   font-family: 'Inter';
   font-style: normal;
@@ -211,3 +231,24 @@ Wrapper.Select = styled.select`
   background: ${({ active }) => active && '#E8F0FE'};
 `;
 Wrapper.Option = styled.option``;
+Wrapper.DiscountStyle = styled.div`
+  display: flex;
+`;
+Wrapper.DiscountStyle.NewPrice = styled.div`
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 16px;
+  color: #46a358;
+  margin-top: 6px;
+`;
+Wrapper.DiscountStyle.OldPrice = styled.div`
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 16px;
+  color: #a5a5a5;
+  margin-top: 6px;
+  margin-left: 10px;
+  text-decoration: line-through;
+`;
