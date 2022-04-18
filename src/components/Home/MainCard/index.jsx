@@ -21,7 +21,7 @@ const MainCard = () => {
         pagination={{ clickable: true }}
       >
         {hero.map((value) => (
-          <SwiperSlide>
+          <SwiperSlide key={value.id}>
             <Left>
               <Desc top>{value?.descTop} </Desc>
               <Title>
