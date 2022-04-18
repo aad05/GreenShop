@@ -129,6 +129,13 @@ const MapData = () => {
     const { selectIndex, price, name, discount } = selectedData;
     setShowSpinner(true);
     setTimeout(() => {
+      setSelectedData({
+        selectIndex: 0,
+        name: '',
+        price: '',
+        discountPrice: '',
+        discount: false,
+      });
       setShowSpinner(false);
       const changedData = mockdata[choosenData].map((value) =>
         value.id - 1 === selectIndex
