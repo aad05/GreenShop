@@ -23,6 +23,7 @@ const Categories = () => {
     setMin(e[0]);
     setMax(e[1]);
   };
+
   const changeChoosenMap = (e, id) => {
     setChoosenData(e);
     setActive(id);
@@ -33,7 +34,7 @@ const Categories = () => {
       {data.map(({ name, id, much }) => (
         <NameWrapper
           onClick={() => changeChoosenMap(name, id)}
-          active={active === id ? true : false}
+          active={active === id ? 1 : 0}
           key={id}
         >
           <div>{name}</div> <div>({much})</div>

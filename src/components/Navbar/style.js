@@ -180,5 +180,25 @@ Wrapper.Modal.Button = styled.div`
 Wrapper.Modal.Icon = styled.img`
   margin-right: ${({ google }) => (google ? '13px' : '5px')};
 `;
-
-// E8F0FE
+Wrapper.Message = styled.div`
+  width: 20px;
+  height: 20px;
+  background: #46a358;
+  border: 2px solid #ffffff;
+  position: absolute;
+  top: 0;
+  right: 50%;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+Wrapper.MessageWrapper = styled.div`
+  position: relative;
+  width: fit-content;
+`;

@@ -77,3 +77,21 @@ Wrapper.Button = styled.div`
 Wrapper.Icon = styled.img`
   margin-right: ${({ google }) => (google ? '13px' : '5px')};
 `;
+
+Wrapper.Select = styled.select`
+  border: 1px solid #eaeaea;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  padding-left: 14px;
+  outline-color: #46a359;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000;
+  margin-bottom: 17px;
+  background: ${({ active }) => active && '#E8F0FE'};
+`;
+Wrapper.Option = styled.option``;

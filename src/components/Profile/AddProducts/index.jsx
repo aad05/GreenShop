@@ -1,26 +1,28 @@
 import React from "react";
 import Check from "../../../assets/icons/check.png";
-import { sidebarData } from "../../../mock/AddProducts/sidebar";
 import { crudData } from "../../../mock/AddProducts/crudBody";
 import {
   AddNew,
-  Line,
   NavBody,
-  PreTitle,
-  SidebarFlex,
   Title,
   Wrapper,
   TitleTH,
   TitleTHGray,
   InputType,
 } from "./style";
-import Logo from "../../../assets/icons/logout2.svg";
 
 const AddProducts = () => {
   const [data, setData] = React.useState(crudData);
+  const [dataInput, setDataInput] = React.useState({
+    title: "",
+    preTitle: "",
+    dataPublished: "",
+    status: "",
+    views: "",
+  });
   const [change, setChange] = React.useState(null);
   // const [edit, setEdit] = React.useState("");
-  const [title, setTitle] = React.useState("");
+  // const [title, setTitle] = React.useState("");
 
   // /////////////////////////////////////////////////// Delete
   const getDelete = (ids) => {
@@ -31,45 +33,36 @@ const AddProducts = () => {
   // ////////////////////////////////////////////////// Edit
   const getChange = (value) => {
     setChange(value.id);
-    setTitle(value);
+    setDataInput({
+      ...dataInput,
+      title: value.title,
+      preTitle: value.preTitle,
+      dataPublished: value.dataPublished,
+      status: value.status,
+    });
   };
-  // console.log(change);
-
-  const saveEditing = (value) => {
-    const newDataEdit = data.map((value) =>
+  const inputChange = (e) => {
+    setDataInput({ ...dataInput, [e.target.name]: e.target.value });
+  };
+  const saveEditing = () => {
+    var newData = data.map((value) =>
       change === value.id
         ? {
             ...value,
-            title: title,
-            preTitle: title,
-            status: title,
-            dataPublished: title,
+            title: dataInput.title,
+            preTitle: dataInput.preTitle,
+            dataPublished: dataInput.dataPublished,
+            status: dataInput.status,
           }
-        : console.log("yemadi")
+        : value
     );
-    setChange(value.id);
-    setData(newDataEdit);
     setChange(null);
+    setData(newData);
   };
 
+  console.log(dataInput.title);
   return (
     <Wrapper>
-      <Wrapper.Sidebar>
-        <Title>My Account</Title>
-        {sidebarData.map((value) => {
-          return (
-            <SidebarFlex>
-              <img className="img" width={20} src={value.icon} alt="" />
-              <PreTitle className="pre-title">{value.title}</PreTitle>
-            </SidebarFlex>
-          );
-        })}
-        <Line />
-        <SidebarFlex>
-          <img src={Logo} width={20} alt="" />
-          <PreTitle bold>Logout</PreTitle>
-        </SidebarFlex>
-      </Wrapper.Sidebar>
       <Wrapper.Body>
         <NavBody>
           <Title italic>My Products</Title>
@@ -81,7 +74,6 @@ const AddProducts = () => {
               {" "}
               <TitleTH>Products</TitleTH>
             </td>
-            {/* <th></th> */}
             <td>
               {" "}
               <TitleTH>Data</TitleTH>
@@ -112,17 +104,19 @@ const AddProducts = () => {
                   {change === value.id ? (
                     <InputType
                       type="text"
-                      onChange={(e) => setTitle(e.target.value)}
-                      value={title.title}
+                      onChange={inputChange}
+                      value={dataInput.title}
+                      name="title"
                     />
                   ) : (
                     <TitleTH margin>{value.title}</TitleTH>
                   )}
                   {change === value.id ? (
                     <InputType
-                      onChange={(e) => setTitle(e.target.value)}
-                      value={title.preTitle}
+                      onChange={inputChange}
+                      value={dataInput.preTitle}
                       type="text"
+                      name="preTitle"
                     />
                   ) : (
                     <TitleTHGray>{value.preTitle}</TitleTHGray>
@@ -131,9 +125,10 @@ const AddProducts = () => {
                 <td>
                   {change === value.id ? (
                     <InputType
-                      onChange={(e) => setTitle(e.target.value)}
-                      value={title.dataPublished}
+                      onChange={inputChange}
+                      value={dataInput.dataPublished}
                       type="text"
+                      name="dataPublished"
                     />
                   ) : (
                     <TitleTHGray>{value.dataPublished}</TitleTHGray>
@@ -142,9 +137,10 @@ const AddProducts = () => {
                 <td>
                   {change === value.id ? (
                     <InputType
-                      onChange={(e) => setTitle(e.target.value)}
-                      value={title.status}
+                      onChange={inputChange}
+                      value={dataInput.status}
                       type="text"
+                      name="status"
                     />
                   ) : (
                     <TitleTHGray>{value.status}</TitleTHGray>

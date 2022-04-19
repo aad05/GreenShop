@@ -4,7 +4,6 @@ import { Wrapper } from './style';
 
 const AcountDetails = () => {
   const [authedData] = useContext(AuthorizationData);
-  //   In inputs have problem not changable
   return (
     <Wrapper>
       <Wrapper.Title>
@@ -16,7 +15,7 @@ const AcountDetails = () => {
           <Wrapper.Lable>First Name</Wrapper.Lable>
           <Wrapper.Input
             active={authedData.firstName.length}
-            value={authedData.firstName}
+            defaultValue={authedData.firstName}
             placeholder='First Name'
           />
         </Wrapper.LabelWrapper>
@@ -24,7 +23,7 @@ const AcountDetails = () => {
           <Wrapper.Lable>Last Name</Wrapper.Lable>
           <Wrapper.Input
             active={authedData.lastName.length}
-            value={authedData.lastName}
+            defaultValue={authedData.lastName}
             placeholder='Last Name'
           />
         </Wrapper.LabelWrapper>
@@ -35,7 +34,7 @@ const AcountDetails = () => {
           <Wrapper.Lable>Email address</Wrapper.Lable>
           <Wrapper.Input
             active={authedData.email.length}
-            value={authedData.email}
+            defaultValue={authedData.email}
             placeholder='Email address'
           />
         </Wrapper.LabelWrapper>
@@ -43,7 +42,7 @@ const AcountDetails = () => {
           <Wrapper.Lable>Phone Number</Wrapper.Lable>
           <Wrapper.Input
             active={authedData.phone.length}
-            value={authedData.phone}
+            defaultValue={authedData.phone}
             placeholder='Phone number'
           />
         </Wrapper.LabelWrapper>
@@ -54,8 +53,16 @@ const AcountDetails = () => {
           <Wrapper.Lable>Username</Wrapper.Lable>
           <Wrapper.Input
             active={authedData.userName.length}
-            value={authedData.userName}
+            defaultValue={authedData.userName}
             placeholder='User name'
+          />
+        </Wrapper.LabelWrapper>
+        <Wrapper.LabelWrapper>
+          <Wrapper.Lable>Viewer Type</Wrapper.Lable>
+          <Wrapper.Input
+            active={authedData.role.length}
+            defaultValue={authedData.role}
+            placeholder='Viewer Type'
           />
         </Wrapper.LabelWrapper>
       </Wrapper.InputWrapper>

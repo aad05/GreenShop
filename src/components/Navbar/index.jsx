@@ -21,10 +21,14 @@ import Login from './Login';
 import Register from './Register';
 import AuthorizationData from '../../context/Authorization';
 import { useNavigate } from 'react-router-dom';
+import Navigator from '../../context/NavigateContext';
+import ProductContext from '../../context/Products';
 
 const Navbar = () => {
   const [activeLogin, setActiveLogin] = useState('login');
   const [authedData, setAutheddata] = useContext(AuthorizationData);
+  const [, setNavigateTo] = useContext(Navigator);
+  const [productData] = useContext(ProductContext);
   const navigate = useNavigate();
   return (
     <>
@@ -41,11 +45,17 @@ const Navbar = () => {
         </Center>
         <Right>
           <NavbarLogos src={search} />
-          <NavbarLogos ml src={karzinka} />
+          <Wrapper.MessageWrapper>
+            <NavbarLogos ml src={karzinka} />
+            {productData.length > 0 && (
+              <Wrapper.Message>{productData.length}</Wrapper.Message>
+            )}
+          </Wrapper.MessageWrapper>
           <LoginButton
             onClick={() => {
               if (!authedData.isAuthed) {
                 setAutheddata({ ...authedData, showModal: true });
+                setNavigateTo('profile/account_details');
               } else {
                 navigate(`profile/account_details`);
               }
