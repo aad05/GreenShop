@@ -54,8 +54,7 @@ const Register = () => {
       }
     }
   };
-  const { email, password, firstName, lastName, phone, userName, storeName } =
-    data;
+  const { email, password, firstName, lastName, phone, userName, storeName } = data;
   return (
     <>
       <Wrapper>
