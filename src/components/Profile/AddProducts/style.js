@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   width: 85%;
@@ -15,8 +15,6 @@ Wrapper.Sidebar = styled.div`
   width: 30%;
   height: fit-content;
   background: #fbfbfb;
-  /* margin-bottom: 30px; */
-  /* border-bottom: 1px solid gray; */
 `;
 Wrapper.Body = styled.div`
   width: 100%;
@@ -54,14 +52,14 @@ const Line = styled.div`
 `;
 
 const PreTitle = styled.div`
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
   line-height: 22px;
   color: #727272;
   margin-left: 13px;
-  font-weight: ${(props) => (props.bold ? "900" : "")};
+  font-weight: ${(props) => (props.bold ? '900' : '')};
   :hover {
     color: green;
     font-weight: 500;
@@ -69,11 +67,11 @@ const PreTitle = styled.div`
 `;
 
 const Title = styled.div`
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
   line-height: 16px;
-  font-size: ${(props) => (props.italic ? "16px" : "18px")};
+  font-size: ${(props) => (props.italic ? '16px' : '18px')};
   margin: 13px 12px;
   color: #3d3d3d;
 `;
@@ -101,7 +99,7 @@ const AddNew = styled.div`
   align-items: center;
   justify-content: center;
   color: #46a358;
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -113,74 +111,63 @@ const AddNew = styled.div`
 `;
 
 const ItemTitle = styled.div`
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 16px;
-  /* identical to box height, or 100% */
-
   color: #3d3d3d;
 `;
 
 const PreItemTitle = styled.div`
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
-  /* identical to box height, or 114% */
-
   color: #a5a5a5;
 `;
 
 const ItemTitleGray = styled.div`
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 16px;
-  /* identical to box height, or 100% */
-
   color: #727272;
 `;
 const BorderTitle = styled.div`
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 16px;
-  /* identical to box height, or 100% */
   margin-bottom: 22px;
   color: #3d3d3d;
 `;
 const CrudTitle = styled.div`
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 16px;
-  /* identical to box height, or 100% */
   color: #727272;
 `;
 const TitleTH = styled.div`
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 16px;
-  /* identical to box height, or 100% */
-  margin-bottom: ${(props) => (props.margin ? "6px" : "")};
+  margin-bottom: ${(props) => (props.margin ? '6px' : '')};
   color: #3d3d3d;
 `;
 const TitleTHGray = styled.div`
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 16px;
-  /* identical to box height, or 100% */
-
   color: #727272;
 `;
 const InputType = styled.input`
