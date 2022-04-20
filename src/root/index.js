@@ -23,7 +23,7 @@ const Root = () => {
             return authedData.isAuthed ? (
               <Route key={id} path={pathname} element={<Component />} />
             ) : (
-              <Route key={id} path={pathname} element={<Navigate to='/' />} />
+              <Route key={id} path={pathname} element={<Navigate to="/" />} />
             );
           })}
         </Route>

@@ -74,7 +74,7 @@ const Right = ({ data }) => {
         <Wrapper.Description>
           The ceramic cylinder planters come with a wooden stand to help elevate
           your plants off the ground. The ceramic cylinder planters come with a
-          wooden stand to help elevate your plants off the ground.{' '}
+          wooden stand to help elevate your plants off the ground.{" "}
         </Wrapper.Description>
       </Wrapper.WrapperDescription>
       {/* ========== Size ========== */}
