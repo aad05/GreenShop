@@ -1,7 +1,6 @@
 import bigflower from "../assets/imgs/big.png";
 import bigflower2 from "../assets/imgs/big.png";
-import bigflower3 from "../assets/imgs/big.png";
-
+import small from "../assets/imgs/little.png";
 export const hero = [
   {
     id: 1,
@@ -10,6 +9,7 @@ export const hero = [
     descLine:
       " We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an unique Urban Jungle. Order your favorite plants!",
     img: bigflower,
+    imgsmall: small,
   },
   {
     id: 2,
@@ -18,6 +18,7 @@ export const hero = [
     descLine:
       " We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an unique Urban Jungle. Order your favorite plants!",
     img: bigflower2,
+    imgsmall: small,
   },
   {
     id: 3,
@@ -26,5 +27,6 @@ export const hero = [
     descLine:
       " We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an unique Urban Jungle. Order your favorite plants!",
     img: bigflower2,
+    imgsmall: small,
   },
 ];

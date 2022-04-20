@@ -64,7 +64,14 @@ export const Button = styled.div`
 `;
 export const Image = styled.img`
   position: absolute;
-  bottom: 20px;
+  bottom: -25px;
   right: 30px;
   width: 32em;
+`;
+
+Image.Small = styled.img`
+  position: absolute;
+  bottom: 5px;
+  right: 300px;
+  width: 135px;
 `;

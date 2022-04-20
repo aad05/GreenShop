@@ -33,6 +33,7 @@ const MainCard = () => {
 
             <Right>
               <Image src={value?.img} alt="cannot be used" />
+              <Image.Small src={value?.imgsmall} alt="cannot be used" />
             </Right>
           </SwiperSlide>
         ))}
