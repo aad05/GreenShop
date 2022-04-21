@@ -112,6 +112,9 @@ const FooterBottom = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  border-bottom: 1px solid rgba(70, 163, 88, 0.2);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 `;
 const Column = styled.div`
   display: flex;

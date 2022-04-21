@@ -105,6 +105,7 @@ const Footer = () => {
           <img src={Visa} alt="" />
         </Column>
       </FooterBottom>
+      <h5 style={{ textAlign: "center" }}>© 2022 GreenShop. All Rights Reserved.</h5>
     </Wrapper>
   );
 };
