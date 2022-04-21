@@ -87,7 +87,7 @@ Body.Img = styled.img`
 Body.Title = styled.div`
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
+  font-size: ${({ date }) => (date ? '12px' : '16px')};
   line-height: 16px;
   color: #3d3d3d;
   margin-top: 31px;
@@ -124,6 +124,23 @@ Body.HoverableIcons = styled.div`
     }
   }
 `;
+Body.DiscountCard = styled.div`
+  width: 80px;
+  height: 29px;
+  background: #46a358;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
 export const PaginationWrapper = styled.div``;
 
 // Edit Modal
@@ -144,4 +161,115 @@ export const AdminEditModal = styled(Modal)`
       color: #46a359;
     }
   }
+`;
+Wrapper.EditImage = styled.img`
+  width: 250px;
+  height: 250px;
+`;
+Wrapper.ModalParagraph = styled.div`
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: ${({ forgot }) => (forgot ? '#46a359' : '#3d3d3d')};
+  margin-bottom: 14px;
+  text-align: ${({ forgot }) => forgot && 'right'};
+`;
+Wrapper.LoginInput = styled.input`
+  border: 1px solid #eaeaea;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  padding-left: 14px;
+  outline-color: #46a359;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000;
+  margin-bottom: 17px;
+  background: ${({ active }) => active && '#E8F0FE'};
+  ::placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #a5a5a5;
+  }
+`;
+Wrapper.Button = styled.div`
+  height: 45px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${({ changeColor }) => (changeColor ? '#727272' : '#fff')};
+  background-color: ${({ changeBg }) => (changeBg ? 'none' : '#46A358')};
+  border: ${({ hasBorder }) => hasBorder && '1px solid #EAEAEA'};
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: ${({ mt }) => mt && `${mt}px`};
+  display: flex;
+`;
+Wrapper.Select = styled.select`
+  border: 1px solid #eaeaea;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  padding-left: 14px;
+  outline-color: #46a359;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000;
+  margin-bottom: 17px;
+  background: ${({ active }) => active && '#E8F0FE'};
+`;
+Wrapper.Option = styled.option``;
+Wrapper.DiscountStyle = styled.div`
+  display: flex;
+`;
+Wrapper.DiscountStyle.NewPrice = styled.div`
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 16px;
+  color: #46a358;
+  margin-top: 6px;
+`;
+Wrapper.DiscountStyle.OldPrice = styled.div`
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 16px;
+  color: #a5a5a5;
+  margin-top: 6px;
+  margin-left: 10px;
+  text-decoration: line-through;
+`;
+export const PlusWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  background: #46a359;
+  width: 50px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+`;
+PlusWrapper.Img = styled.img``;
+PlusWrapper.Text = styled.div`
+  padding-right: 5px;
+  color: #fff;
+`;
+Body.DateWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;

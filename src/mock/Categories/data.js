@@ -26,6 +26,8 @@ export const data = {
       price: 119.0,
       discount: false,
       img: flower1,
+      date: new Date('2020-04-01'),
+      sale: 5,
     },
     {
       id: 2,
@@ -33,6 +35,8 @@ export const data = {
       price: 149.0,
       discount: false,
       img: flower2,
+      date: new Date('2020-07-01'),
+      sale: 2,
     },
     {
       id: 3,
@@ -40,6 +44,8 @@ export const data = {
       price: 129.0,
       discount: false,
       img: flower3,
+      date: new Date('2021-04-01'),
+      sale: 20,
     },
     {
       id: 4,
@@ -47,6 +53,8 @@ export const data = {
       price: 109.0,
       discount: false,
       img: flower4,
+      date: new Date('2023-04-01'),
+      sale: 55,
     },
     {
       id: 5,
@@ -54,6 +62,8 @@ export const data = {
       price: 19.0,
       discount: false,
       img: flower5,
+      date: new Date('2021-07-01'),
+      sale: 78,
     },
     {
       id: 6,
@@ -61,6 +71,8 @@ export const data = {
       price: 219.0,
       discount: false,
       img: flower6,
+      date: new Date('2026-11-09'),
+      sale: 41,
     },
     {
       id: 7,
@@ -68,6 +80,8 @@ export const data = {
       price: 329.0,
       discount: false,
       img: flower7,
+      date: new Date('2000-12-12'),
+      sale: 1,
     },
     {
       id: 8,
@@ -75,6 +89,8 @@ export const data = {
       price: 530.0,
       discount: false,
       img: flower8,
+      date: new Date('2021-06-06'),
+      sale: 23,
     },
     {
       id: 9,
@@ -82,6 +98,8 @@ export const data = {
       price: 19.0,
       discount: false,
       img: flower9,
+      date: new Date('2019-03-19'),
+      sale: 212,
     },
     {
       id: 10,
@@ -89,6 +107,8 @@ export const data = {
       price: 89.0,
       discount: false,
       img: flower10,
+      date: new Date('2018-02-19'),
+      sale: 0,
     },
     {
       id: 11,
@@ -96,6 +116,8 @@ export const data = {
       price: 10.0,
       discount: false,
       img: flower11,
+      date: new Date('2018-02-09'),
+      sale: 22,
     },
     {
       id: 12,
@@ -103,6 +125,8 @@ export const data = {
       price: 1.0,
       discount: false,
       img: flower12,
+      date: new Date('2017-01-21'),
+      sale: 112,
     },
     {
       id: 13,
@@ -110,6 +134,8 @@ export const data = {
       price: 9.0,
       discount: false,
       img: flower13,
+      date: new Date('2090-03-18'),
+      sale: 2,
     },
     {
       id: 14,
@@ -117,6 +143,8 @@ export const data = {
       price: 11.0,
       discount: false,
       img: flower14,
+      date: new Date('1800-03-19'),
+      sale: 192,
     },
     {
       id: 15,
@@ -124,6 +152,8 @@ export const data = {
       price: 13.0,
       discount: false,
       img: flower15,
+      date: new Date('1900-08-19'),
+      sale: 152,
     },
     {
       id: 16,
@@ -131,6 +161,8 @@ export const data = {
       price: 103.0,
       discount: false,
       img: flower16,
+      date: new Date('1902-08-19'),
+      sale: 512,
     },
     {
       id: 17,
@@ -138,6 +170,8 @@ export const data = {
       price: 4043.0,
       discount: false,
       img: flower17,
+      date: new Date('1907-08-19'),
+      sale: 1232,
     },
     {
       id: 18,
@@ -145,6 +179,8 @@ export const data = {
       price: 12.0,
       discount: false,
       img: flower18,
+      date: new Date('1920-08-19'),
+      sale: 1132,
     },
     {
       id: 19,
@@ -152,6 +188,8 @@ export const data = {
       price: 19.0,
       discount: false,
       img: flower19,
+      date: new Date('1930-08-19'),
+      sale: 232,
     },
     {
       id: 20,
@@ -159,6 +197,8 @@ export const data = {
       price: 19.0,
       discount: false,
       img: flower20,
+      date: new Date('1931-08-19'),
+      sale: 252,
     },
   ],
   'Potter Plants': [

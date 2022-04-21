@@ -1,11 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Wrapper } from './style';
 import star from '../../../assets/icons/starlight.svg';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
+import AuthorizationData from '../../../context/Authorization';
+import Navigator from '../../../context/NavigateContext';
+import ProductContext from '../../../context/Products';
+
 const Right = ({ data }) => {
   const [sizeActive, setSizeActive] = useState(1);
   const [count, setCount] = useState(1);
   const { type, id } = useParams();
+  const [authedData, setAuthedData] = useContext(AuthorizationData);
+  const [, setNavigateTo] = useContext(Navigator);
+  const [productData, setProductData] = useContext(ProductContext);
+  const navigate = useNavigate();
+
+  const addItem = () => {
+    const newData = { ...data, count };
+    setProductData([...productData, newData]);
+  };
+
+  const buyHandle = () => {
+    const { isAuthed, showModal } = authedData;
+
+    if (isAuthed) {
+      addItem();
+      navigate('/shop/products');
+    } else {
+      setNavigateTo(`/shop/${type}/${id}`);
+      setAuthedData({
+        ...authedData,
+        showModal: !showModal,
+      });
+    }
+  };
+
+  const addCart = () => {
+    const { isAuthed, showModal } = authedData;
+
+    if (isAuthed) {
+      addItem();
+      navigate('/home');
+    } else {
+      setNavigateTo(`/shop/${type}/${id}`);
+      setAuthedData({
+        ...authedData,
+        showModal: !showModal,
+      });
+    }
+  };
   return (
     <Wrapper>
       {/* ========== Header ========== */}
@@ -31,7 +74,7 @@ const Right = ({ data }) => {
         <Wrapper.Description>
           The ceramic cylinder planters come with a wooden stand to help elevate
           your plants off the ground. The ceramic cylinder planters come with a
-          wooden stand to help elevate your plants off the ground.{' '}
+          wooden stand to help elevate your plants off the ground.{" "}
         </Wrapper.Description>
       </Wrapper.WrapperDescription>
       {/* ========== Size ========== */}
@@ -80,8 +123,8 @@ const Right = ({ data }) => {
           </Wrapper.IncreamentCart>
         </Wrapper.IncreamentWrapper>
         <Wrapper.ButtonWrapper>
-          <Wrapper.Button>Buy Now</Wrapper.Button>
-          <Wrapper.Button>Add to cart</Wrapper.Button>
+          <Wrapper.Button onClick={buyHandle}>Buy Now</Wrapper.Button>
+          <Wrapper.Button onClick={addCart}>Add to cart</Wrapper.Button>
           <Wrapper.ButtonHeart>
             <Wrapper.Heart />
           </Wrapper.ButtonHeart>

@@ -5,19 +5,29 @@ import AuthorizationData from '../../../context/Authorization';
 import { Wrapper } from './style';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import Navigator from '../../../context/NavigateContext';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [data, setData] = useState({
+    email: '',
+    password: '',
+    role: 'user',
+  });
   const [showSpinner, setShowSpinner] = useState(false);
   const [authData, setAuhedData] = useContext(AuthorizationData);
   const [warnignAnimation, setWarningAnimation] = useState(false);
+  const [navogateTo] = useContext(Navigator);
+
   const antIcon = (
     <LoadingOutlined style={{ fontSize: 24, color: '#fff' }} spin />
   );
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
   const onSubmit = (e) => {
+    const { email, password } = data;
     if (e.key === 'Enter' || e.keyCode === 13 || e.type === 'click') {
-      email && password && authData.checkUser(email, password);
+      email && password && authData.checkUser(data, navogateTo);
       setShowSpinner(true);
       setTimeout(() => {
         if (authData.isAuthed) {
@@ -34,6 +44,7 @@ const Login = () => {
       }, 2000);
     }
   };
+  const { email, password } = data;
   return (
     <>
       <Wrapper>
@@ -42,7 +53,8 @@ const Login = () => {
         </Wrapper.ModalParagraph>
         <Wrapper.LoginInput
           active={email.length > 0}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleChange}
+          name='email'
           placeholder='Email'
           value={email}
           onKeyDown={onSubmit}
@@ -50,11 +62,16 @@ const Login = () => {
         <Wrapper.LoginInput
           value={password}
           active={password.length > 0}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={handleChange}
           type='password'
+          name='password'
           placeholder='Password'
           onKeyDown={onSubmit}
         />
+        <Wrapper.Select name='role' onChange={handleChange}>
+          <Wrapper.Option value={'user'}>User</Wrapper.Option>
+          <Wrapper.Option value={'seller'}>Seller</Wrapper.Option>
+        </Wrapper.Select>
         <Wrapper.ModalParagraph forgot>Forgot Password?</Wrapper.ModalParagraph>
         <Wrapper.Button
           warnignAnimation={warnignAnimation}
