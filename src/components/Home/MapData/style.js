@@ -87,7 +87,7 @@ Body.Img = styled.img`
 Body.Title = styled.div`
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
+  font-size: ${({ date }) => (date ? '12px' : '16px')};
   line-height: 16px;
   color: #3d3d3d;
   margin-top: 31px;
@@ -251,4 +251,25 @@ Wrapper.DiscountStyle.OldPrice = styled.div`
   margin-top: 6px;
   margin-left: 10px;
   text-decoration: line-through;
+`;
+export const PlusWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  background: #46a359;
+  width: 50px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+`;
+PlusWrapper.Img = styled.img``;
+PlusWrapper.Text = styled.div`
+  padding-right: 5px;
+  color: #fff;
+`;
+Body.DateWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;

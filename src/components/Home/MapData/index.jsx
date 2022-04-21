@@ -6,6 +6,7 @@ import {
   SortByDateWrap,
   SortByPriceWrap,
   Body,
+  PlusWrapper,
   AdminEditModal,
 } from './style';
 import { Pagination } from 'antd';
@@ -48,12 +49,21 @@ const MapData = () => {
   const navigate = useNavigate();
   const AllPlants = () => {
     setSelected('All Plants');
+    setMockData({ ...mockdata, [choosenData]: data[choosenData] });
   };
   const NewArrivals = () => {
     setSelected('New Arrivals');
+    const sortedData = mockdata[choosenData].sort(
+      (a, b) => b.date.getTime() - a.date.getTime()
+    );
+    setMockData({ ...mockdata, [choosenData]: sortedData });
   };
   const Sale = () => {
     setSelected('Sale');
+
+    const sortedData = mockdata[choosenData].sort((a, b) => b.sale - a.sale);
+
+    setMockData({ ...mockdata, [choosenData]: sortedData });
   };
   useEffect(() => {
     switch (page) {
@@ -239,8 +249,19 @@ const MapData = () => {
                   {value.discount && (
                     <Body.DiscountCard>Discount</Body.DiscountCard>
                   )}
+                  <PlusWrapper>
+                    {/* <PlusWrapper.Img src={plus} /> */}
+                    <PlusWrapper.Text className='changeColor'>
+                      {value.sale}
+                    </PlusWrapper.Text>
+                  </PlusWrapper>
                   <Body.Img src={value.img} />
-                  <Body.Title>{value.name}</Body.Title>
+                  <Body.DateWrapper>
+                    <Body.Title>{value.name}</Body.Title>
+                    <Body.Title date>{`${value.date.getFullYear()} : ${
+                      value.date.getMonth() + 1
+                    } : ${value.date.getDate()}`}</Body.Title>
+                  </Body.DateWrapper>
                   {value.discount ? (
                     <Wrapper.DiscountStyle>
                       <Wrapper.DiscountStyle.NewPrice>
