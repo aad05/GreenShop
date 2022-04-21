@@ -1,9 +1,10 @@
-import React from 'react';
-import Categories from './Categories Dashboard';
-import CreateNewsletter from './CreateNewsletter';
-import MainCard from './MainCard';
-import MapData from './MapData';
-import { Container } from './style';
+import React from "react";
+import Footer from "../Footer";
+import Categories from "./Categories Dashboard";
+import CreateNewsletter from "./CreateNewsletter";
+import MainCard from "./MainCard";
+import MapData from "./MapData";
+import { Container } from "./style";
 // import { data } from '../../utils/auth/data';
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
         <MapData />
       </Container>
       <CreateNewsletter />
+      <Footer />
     </div>
   );
 };
