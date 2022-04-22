@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import ProductContext from '../../../context/Products';
+import React, { useContext, useEffect, useState } from "react";
+import ProductContext from "../../../context/Products";
 import {
   Checkout,
   Container,
@@ -31,7 +31,7 @@ import {
   Wrapper,
   Wrapper2,
   Wrappertable,
-} from './style';
+} from "./style";
 
 export const CouponApplyPage = () => {
   // const [nav, setNav] = useState('home');
@@ -44,7 +44,7 @@ export const CouponApplyPage = () => {
         ? {
             ...value,
             count:
-              type === 'add'
+              type === "add"
                 ? value.count + 1
                 : value.count > 1
                 ? value.count - 1
@@ -90,9 +90,9 @@ export const CouponApplyPage = () => {
               </Product>
               <Price center>${price}.00</Price>
               <Price>
-                <Plus onClick={() => counterHandle(id, 'minus')}>-</Plus>
+                <Plus onClick={() => counterHandle(id, "minus")}>-</Plus>
                 <Count>{count}</Count>
-                <Plus onClick={() => counterHandle(id, 'add')}>+</Plus>
+                <Plus onClick={() => counterHandle(id, "add")}>+</Plus>
               </Price>
               <Price>
                 <Total>${price * count}.00</Total>
@@ -107,7 +107,7 @@ export const CouponApplyPage = () => {
           <RightTitle>Card Totals</RightTitle>
           <Rightapply>Coupon Apply Code: {couponCode}</Rightapply>
           <Rightwrapper>
-            <Rightinput placeholder='Enter coupon code here...' />
+            <Rightinput placeholder="Enter coupon code here..." />
             <Rightbtn>Apply</Rightbtn>
           </Rightwrapper>
           <Rightwrapper2>

@@ -1,19 +1,20 @@
-import styled from 'styled-components';
-import { ReactComponent as deletee } from '../../../assets/icons/delete.svg';
+import styled from "styled-components";
+import { ReactComponent as deletee } from "../../../assets/icons/delete.svg";
 
 export const Container = styled.div`
   margin-bottom: 50px;
 `;
 
 export const Wrapper = styled.div`
+  margin-bottom: 80px;
   display: flex;
   width: 100%;
-  margin-top: ${({ products }) => (products ? '51px' : '36px')};
+  margin-top: ${({ products }) => (products ? "51px" : "36px")};
 `;
 
 export const Navitem = styled.div`
   font-style: normal;
-  font-weight: ${({ option }) => (option ? 'bold' : 'normal')};
+  font-weight: ${({ option }) => (option ? "bold" : "normal")};
   font-size: 15px;
   line-height: 16px;
   color: #3d3d3d;
