@@ -1,0 +1,23 @@
+.rec-arrow-right {
+  display: none;
+}
+.rec-arrow-left {
+  display: none;
+}
+.price {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  /* identical to box height, or 100% */
+
+  color: #46a358;
+}
+.rec-dot {
+  box-shadow: 0 0 1px 2px green !important;
+}
+
+.rec-dot_active {
+  background-color: green !important;
+}
