@@ -18,6 +18,16 @@ const Right = ({ data }) => {
   const addItem = () => {
     const newData = { ...data, count };
     setProductData([...productData, newData]);
+    if (productData.length >= 1) {
+      setProductData(
+        productData.map((value, index) =>
+          productData.indexOf(value.id) === index
+            ? { ...value, count: value.count++ }
+            : value
+        )
+      );
+    }
+    console.log(productData);
   };
 
   const buyHandle = () => {
@@ -74,7 +84,7 @@ const Right = ({ data }) => {
         <Wrapper.Description>
           The ceramic cylinder planters come with a wooden stand to help elevate
           your plants off the ground. The ceramic cylinder planters come with a
-          wooden stand to help elevate your plants off the ground.{" "}
+          wooden stand to help elevate your plants off the ground.{' '}
         </Wrapper.Description>
       </Wrapper.WrapperDescription>
       {/* ========== Size ========== */}

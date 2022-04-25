@@ -169,11 +169,12 @@ export const Rightbtn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 102px;
+  width: 152px;
   height: 40px;
   background: #46a358;
   border-radius: 0px 3px 3px 0px;
   color: white;
+  cursor: pointer;
 `;
 
 export const Sub = styled.div`
