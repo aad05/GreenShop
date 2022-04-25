@@ -32,11 +32,22 @@ import {
   Wrapper2,
   Wrappertable,
 } from './style';
+import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router';
 
 export const CouponApplyPage = () => {
   // const [nav, setNav] = useState('home');
   const [product, setProduct] = useContext(ProductContext);
+  const [codeInput, setCodeInput] = useState('');
   const [couponCode, setCouponCode] = useState(0);
+  const [showSpinner, setShowSpinner] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
+
+  const antIcon = (
+    <LoadingOutlined style={{ fontSize: 24, color: '#fff' }} spin />
+  );
+  const navigate = useNavigate();
 
   const counterHandle = (id, type) => {
     const changedData = product.map((value) =>
@@ -61,6 +72,26 @@ export const CouponApplyPage = () => {
   useEffect(() => {
     setCouponCode(Math.floor(Math.random() * 1000000));
   }, []);
+
+  const checkCode = () => {
+    setShowSpinner(true);
+    if (product.length < 1) {
+      setTimeout(() => {
+        setShowSpinner(false);
+        setShowWarning(true);
+        setTimeout(() => {
+          setShowWarning(false);
+        }, 1000);
+      }, 500);
+    } else {
+      setTimeout(() => {
+        if (couponCode + '' === codeInput) navigate('/shop/products/checkout');
+        else alert('Wrong or empty coupon apply code');
+        setShowSpinner(false);
+      }, 1500);
+    }
+  };
+
   return (
     <Container>
       {/* <Wrapper>
@@ -107,8 +138,20 @@ export const CouponApplyPage = () => {
           <RightTitle>Card Totals</RightTitle>
           <Rightapply>Coupon Apply Code: {couponCode}</Rightapply>
           <Rightwrapper>
-            <Rightinput placeholder='Enter coupon code here...' />
-            <Rightbtn>Apply</Rightbtn>
+            <Rightinput
+              value={codeInput}
+              onChange={(e) => setCodeInput(e.target.value)}
+              placeholder='Enter coupon code here...'
+            />
+            <Rightbtn onClick={checkCode}>
+              {showSpinner ? (
+                <Spin indicator={antIcon} />
+              ) : showWarning ? (
+                'Data is empty'
+              ) : (
+                'Apply'
+              )}
+            </Rightbtn>
           </Rightwrapper>
           <Rightwrapper2>
             <Sub>Subtotal</Sub>

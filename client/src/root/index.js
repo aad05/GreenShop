@@ -7,6 +7,7 @@ import ParamsComponent from '../components/ParamsComponent';
 import Profile from '../components/Profile';
 import AuthorizationData from '../context/Authorization';
 import Products from '../components/Products';
+import Checkout from '../components/Products/Checkout';
 
 const Root = () => {
   const [authedData] = useContext(AuthorizationData);
@@ -23,11 +24,12 @@ const Root = () => {
             return authedData.isAuthed ? (
               <Route key={id} path={pathname} element={<Component />} />
             ) : (
-              <Route key={id} path={pathname} element={<Navigate to="/" />} />
+              <Route key={id} path={pathname} element={<Navigate to='/' />} />
             );
           })}
         </Route>
         <Route path='/' element={<Navigate to='/home' />} />
+        <Route path='/shop/products/checkout' element={<Checkout />} />
       </Route>
     </Routes>
   );
