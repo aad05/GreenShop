@@ -7,7 +7,9 @@ import {
   Input,
   Inputs,
   Left,
+  ModalMain,
   Notes,
+  OrderDetail,
   Payementwrapper,
   Paymentmethods,
   Paymenttitle,
@@ -31,8 +33,12 @@ import {
   Righttitle,
   Righttotal,
   Righttotalsubtotal,
+  Shipping,
   Wrapper,
 } from './style';
+import img1 from '../../../../assets/imgs/flower1.png'
+import img2 from '../../../../assets/imgs/flower2.png'
+import img3 from '../../../../assets/imgs/flower3.png'
 import payment from '../../../../assets/imgs/payement-types.png';
 import ProductContext from '../../../../context/Products';
 import { Spin } from 'antd';
@@ -40,6 +46,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 const antIcon = (
   <LoadingOutlined style={{ fontSize: 24, color: '#fff' }} spin />
 );
+
 
 const OrderPage = () => {
   const [productData] = useContext(ProductContext);
@@ -105,7 +112,94 @@ const OrderPage = () => {
           visible={isModalVisible}
           onCancel={() => setIsModalVisible(false)}
         >
-          sss
+          <ModalMain>
+            <ModalMain.Logo />
+            <ModalMain.Title>Your order has been received</ModalMain.Title>
+          </ModalMain>
+          <ModalMain.Wrapper>
+            <ModalMain.SubWrapper>
+              <ModalMain.Order>Order Number</ModalMain.Order>
+              <ModalMain.Number>19586687</ModalMain.Number>
+            </ModalMain.SubWrapper>
+            <ModalMain.SubWrapper>
+              <ModalMain.Order>Date</ModalMain.Order>
+              <ModalMain.Number>15 Sep, 2021</ModalMain.Number>
+            </ModalMain.SubWrapper>
+            <ModalMain.SubWrapper>
+              <ModalMain.Order>Total</ModalMain.Order>
+              <ModalMain.Number>2,699.00</ModalMain.Number>
+            </ModalMain.SubWrapper>
+            <ModalMain.SubWrapper>
+              <ModalMain.Order>Payment Method</ModalMain.Order>
+              <ModalMain.Number>Cash on delivery</ModalMain.Number>
+            </ModalMain.SubWrapper>
+          </ModalMain.Wrapper>
+          <OrderDetail>
+            <OrderDetail.Title>Order Details</OrderDetail.Title>
+            <OrderDetail.Wrapper>
+              <OrderDetail.Item1>
+                <OrderDetail.Titles>Products</OrderDetail.Titles>
+                <OrderDetail.Container>
+                  <OrderDetail.Img src={img1} />
+                  <OrderDetail.Right>
+                    <OrderDetail.Name>Barberton Daisy</OrderDetail.Name>
+                    <OrderDetail.Sku>SKU: 1995751877966</OrderDetail.Sku>
+                  </OrderDetail.Right>
+                </OrderDetail.Container>
+                <OrderDetail.Container>
+                  <OrderDetail.Img src={img2} />
+                  <OrderDetail.Right>
+                    <OrderDetail.Name>Blushing Bromeliad</OrderDetail.Name>
+                    <OrderDetail.Sku>SKU: 1995751877966</OrderDetail.Sku>
+                  </OrderDetail.Right>
+                </OrderDetail.Container>
+                <OrderDetail.Container>
+                  <OrderDetail.Img src={img3} />
+                  <OrderDetail.Right>
+                    <OrderDetail.Name>Aluminum Plant</OrderDetail.Name>
+                    <OrderDetail.Sku>SKU: 1995751877966</OrderDetail.Sku>
+                  </OrderDetail.Right>
+                </OrderDetail.Container>
+              </OrderDetail.Item1>
+              <OrderDetail.Item2>
+                <OrderDetail.Titles>Qty</OrderDetail.Titles>
+                <OrderDetail.Container>
+                  <OrderDetail.Qty>(x 2)</OrderDetail.Qty>
+                </OrderDetail.Container>
+                <OrderDetail.Container>
+                  <OrderDetail.Qty>(x 2)</OrderDetail.Qty>
+                </OrderDetail.Container>
+                <OrderDetail.Container>
+                  <OrderDetail.Qty>(x 2)</OrderDetail.Qty>
+                </OrderDetail.Container>
+              </OrderDetail.Item2>
+              <OrderDetail.Item3>
+                <OrderDetail.Titles end>Subtotal</OrderDetail.Titles>
+                <OrderDetail.Container>
+                  <OrderDetail.Subtotal>$238.00</OrderDetail.Subtotal>
+                </OrderDetail.Container>
+                <OrderDetail.Container>
+                  <OrderDetail.Subtotal>$238.00</OrderDetail.Subtotal>
+                </OrderDetail.Container>
+                <OrderDetail.Container>
+                  <OrderDetail.Subtotal>$238.00</OrderDetail.Subtotal>
+                </OrderDetail.Container>
+              </OrderDetail.Item3>
+            </OrderDetail.Wrapper>
+            <Shipping>
+              <Shipping.Title>Shiping</Shipping.Title>
+              <Shipping.Price>$16.00</Shipping.Price>
+            </Shipping>
+            <Shipping last>
+              <Shipping.Total>Total</Shipping.Total>
+              <Shipping.PriceGreen>$2,699.00</Shipping.PriceGreen>
+            </Shipping>
+
+            <OrderDetail.Description>
+            Your order is currently being processed. You will receive an order confirmation email shortly with the expected delivery date for your items.
+            </OrderDetail.Description>
+            <OrderDetail.Button>Track your order</OrderDetail.Button>
+          </OrderDetail>
         </Wrapper.Modal>
         <Left>
           <Righttitle>Billing Address</Righttitle>

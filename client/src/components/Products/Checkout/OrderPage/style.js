@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Modal } from 'antd';
+import {ReactComponent as modal} from '../../../../assets/icons/ordermodal.svg'
 
 export const Container = styled.div`
   position: relative;
@@ -297,6 +298,7 @@ Wrapper.Modal = styled(Modal)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 0;
   .ant-btn-default {
     display: none;
   }
@@ -308,4 +310,255 @@ Wrapper.Modal = styled(Modal)`
       color: #46a359;
     }
   }
+  .ant-modal-body{
+    padding: 0;
+  }
+
+  .ant-modal-footer{
+    padding: 0;
+  }
 `;
+
+
+export const ModalMain = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 156px;
+  background: rgba(70, 163, 88, 0.06);
+`
+
+ModalMain.Logo = styled(modal)`
+
+`
+
+ModalMain.Title = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  color: #727272;
+  margin-top: 16px;
+`
+
+ModalMain.Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  height: 65px;
+  padding: 0 38px;
+  border-bottom: 1px solid rgba(70, 163, 88, 0.2);;
+`
+
+ModalMain.SubWrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-right: 1px solid rgba(70, 163, 88, 0.2);
+  align-items: center;
+  :last-child{
+    border-right: 0;
+  }
+  
+`
+
+ModalMain.Order = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #727272;
+`
+
+ModalMain.Number = styled.div`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 16px;
+  color: #727272;
+  margin-top: 3px;
+`
+
+export const OrderDetail = styled.div`
+  width: 100%;
+  padding: 0 38px;
+`
+
+OrderDetail.Title = styled.div`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 16px;
+  color: #3D3D3D;
+  margin-top: 18px;
+  margin-bottom: 12px;
+`
+
+OrderDetail.Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+`
+
+OrderDetail.Item1 = styled.div`
+  flex: 5;
+`
+
+OrderDetail.Item2 = styled.div`
+  flex: 1;
+`
+
+OrderDetail.Item3 = styled.div`
+  flex: 2;
+  align-content: flex-end;
+`
+
+OrderDetail.Titles = styled.div`
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  color: #3D3D3D;
+  padding-bottom: 11px;
+  border-bottom: 0.3px solid rgba(70, 163, 88, 0.5);
+  display: flex;
+  justify-content: ${({end}) => end && 'flex-end'};
+`
+
+OrderDetail.Container = styled.div`
+  display: flex;
+  align-items: center;
+  height: 70px;
+  background-color: #FBFBFB;
+  margin-top: 11px;
+`
+
+OrderDetail.Img = styled.img`
+  width: 70px;
+  height: 70px;
+`
+
+OrderDetail.Right = styled.div`
+  padding-left: 5px;
+`
+
+OrderDetail.Name = styled.div`
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  color: #3D3D3D;
+`
+
+OrderDetail.Sku = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #A5A5A5;
+  margin-top: 6px;
+`
+
+OrderDetail.Qty = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: right;
+  color: #727272;
+`
+
+OrderDetail.Subtotal = styled.div`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 16px;
+  color: #46A358;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+`
+
+
+export const Shipping = styled.div`
+  display: flex;
+  margin-top: 18px;
+  border-bottom: ${({last}) => last && '0.3px solid rgba(70, 163, 88, 0.5)'};
+  padding-bottom: ${({last}) => last && '20px'};
+`
+
+Shipping.Title = styled.div`
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 16px;
+    color: #3D3D3D;
+    flex: 2;
+    display: flex;
+    justify-content: center;
+  `
+
+Shipping.Price = styled.div`
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 16px;
+  text-align: right;
+  color: #3D3D3D;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+`
+
+Shipping.Total = styled.div`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  color: #3D3D3D;
+  flex: 2;
+    display: flex;
+    justify-content: center;
+`
+
+Shipping.PriceGreen = styled.div`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 16px;
+  text-align: right;
+  color: #46A358;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+`
+
+OrderDetail.Description = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+  color: #727272;
+  margin: 10px 0 25px 0;
+  padding: 0 5px;
+`
+
+OrderDetail.Button = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 162px;
+  height: 45px;
+  background: #46A358;
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  color: #FFFFFF;
+  margin: auto;
+  margin-bottom: 30px;
+`
