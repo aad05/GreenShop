@@ -1,8 +1,13 @@
 import React from 'react';
 import { Wrapper } from './style';
+import OrderPage from './OrderPage';
 
 const Checkout = () => {
-  return <Wrapper>Welcome to checkout page</Wrapper>;
+  return (
+    <Wrapper>
+      <OrderPage />
+    </Wrapper>
+  );
 };
 
 export default Checkout;

@@ -18,16 +18,15 @@ const Right = ({ data }) => {
   const addItem = () => {
     const newData = { ...data, count };
     setProductData([...productData, newData]);
-    if (productData.length >= 1) {
-      setProductData(
-        productData.map((value, index) =>
-          productData.indexOf(value.id) === index
-            ? { ...value, count: value.count++ }
-            : value
-        )
-      );
-    }
-    console.log(productData);
+    // if (productData.length >= 1) {
+    //   setProductData(
+    //     productData.map((value, index) =>
+    //       productData.indexOf(value.id) === index
+    //         ? { ...value, count: value.count++ }
+    //         : value
+    //     )
+    //   );
+    // }
   };
 
   const buyHandle = () => {
